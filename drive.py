@@ -1,6 +1,7 @@
 import minimalmodbus
 import time
 
+
 servoDrive = minimalmodbus.Instrument('/dev/cu.usbserial-A704FRNP', 1)
 servoDrive.serial.baudrate = 38400
 servoDrive.close_port_after_each_call = True
@@ -23,21 +24,22 @@ def positionControlMode():
     except IOError:
         print("Positon control settings failed", IOError)        
 
+
 def servoTuning():
     try:
         # 1. Pulse multiplikator
-        servoDrive.write_register(262, 5, functioncode=6)
+        servoDrive.write_register(262, 1, functioncode=6)
 
         # 2. Smoothing
-        #servoDrive.write_register(535, 2, functioncode=6)
+        servoDrive.write_register(535, 1, functioncode=6)
 
         # 3. Smoothing Filter Time?
 
-        # 4. Feedforward %
-        #servoDrive.write_register(516, 200, functioncode=6)
+        # 4. Feedforward % (sound issue)
+        # servoDrive.write_register(516, 200, functioncode=6)
 
         # 5. Gain % (need to match attribute)
-        # servoDrive.write_register(514, 200, functioncode=6)
+        # servoDrive.write_register(514, 280, functioncode=6)
 
         print("Servo tuning successful")
     except IOError:
