@@ -15,6 +15,8 @@ void setup()
   delay(2000);
   Serial.setTimeout(50);
 }
+
+
 void loop()
 {
   unsigned long currentMillis = millis();
@@ -22,7 +24,7 @@ void loop()
     String incoming = Serial.readStringUntil('\n');
     float position = incoming.toFloat();
     if (abs(position) <= MAX_POSITION) {
-      stepper.moveTo(position);  
+      stepper.moveTo(position);
       stepper.setSpeed(MAX_SPEED);
     }
     previousMillis = currentMillis;
