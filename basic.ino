@@ -1,8 +1,11 @@
 /*
   f = 1 / T
-  6.25Khz square wave
-  https://reprage.com/post/non-blocking-control-of-stepper-motors-on-arduino
+  400us = 6.25Khz square wave
+  Servo drive frequency - Fn9
 
+  References
+  https://reprage.com/post/non-blocking-control-of-stepper-motors-on-arduino
+  https://www.makerguides.com/a4988-stepper-motor-driver-arduino-tutorial/
 */
 
 const int STEP_PIN = 12;
@@ -32,12 +35,14 @@ void loop() {
   delay(1000);
 }
 
+
 void moveCW() {
   digitalWrite(DIR_PIN, HIGH);
   for (int i = 0; i < stepsPerRevolution; i++) {
     step();
   }
 }
+
 
 void moveCCW() {
   digitalWrite(DIR_PIN, LOW);
