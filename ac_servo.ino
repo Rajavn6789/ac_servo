@@ -2,6 +2,7 @@
 #include <AccelStepper.h>
 AccelStepper stepper(AccelStepper::DRIVER, 12, 11);
 
+
 const int MAX_SPEED = 10000;
 const long interval = 30;  // formula = 6000/rpm ms
 unsigned long previousMillis = 0;
