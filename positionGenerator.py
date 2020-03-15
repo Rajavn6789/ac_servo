@@ -1,8 +1,9 @@
 import serial
 import time
 import random
-     
-adruinoSerial = serial.Serial("/dev/cu.usbmodem14201", 38400, timeout=1000)
+
+adruinoPort = "COM3"
+adruinoSerial = serial.Serial(adruinoPort, 38400, timeout=1000)
 time.sleep(2)
 print("Adruino serial connection established")
 posList = []
